@@ -1,0 +1,55 @@
+name: JailPlugin
+version: @version@
+main: me.thane.jailplugin.JailPlugin
+api-version: 1.16
+authors: [Thane]
+description: Allow for more eccentric punishment in minecraft.
+commands:
+  jail:
+    usage: "Usage: /jail <username> [duration in DD:HH:MM]"
+    description: Put a given player in jail. If no duration is given, sentence is defaulted to indefinite.
+    permission: prison.jail
+  unjail:
+    usage: "Usage: /unjail <username>"
+    description: Free a given user from jail.
+    permission: prison.unjail
+  viewsentence:
+    usage: "Usage: /viewsentence [username]"
+    description: View the remaining duration of a given player's sentence. Defaults to oneself.
+    permission: prison.view-sentence
+  createprison:
+    usage: "Usage: /createprison <name>"
+    description: Creates a prison of the given name for cells and prisoners to be associated with.
+    permission: prison.create-prison
+  deleteprison:
+    usage: "Usage: /deleteprison <name>"
+    description: Deletes a prison of the given name.
+    permission: prison.delete-prison
+  addcell:
+    usage: "Usage: /addcell [prison] <corner1> <corner2> [spawn location]"
+    description: Adds a cell to a given prison. Defaults to the nearest prison to the sender. Defaults to the player's current position.
+    permission: prison.add-cell
+  removecell:
+    usage: "Usage: /removecell <position>"
+    description: Removes a cell from its prison based on which cell the given position is within.
+  reloadconfig:
+    usage: "Usage: /reloadconfig"
+    description: Reloads the prisons.json config file. Useful for manually updating a prison term.
+
+permissions:
+  prison.create-prison:
+    default: op
+  prison.delete-prison:
+    default: op
+  prison.add-cell:
+    default: op
+  prison.remove-cell:
+    default: op
+  prison.jail:
+    default: op
+  prison.unjail:
+    default: op
+  prison.view-sentence:
+    default: true
+  prison.reload-config:
+    default: op
